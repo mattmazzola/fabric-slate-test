@@ -1,5 +1,5 @@
 header {
-  width: 500px;
+  width: 600px;
   text-align: center;
   margin: 0 auto;
 }
@@ -23,14 +23,25 @@ header {
   overflow-y: auto;
 }
 
+.test-modal--native {
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+  background: white;
+}
+
 .test-modal-content {
   position: absolute;
-  width: 90%;
+  width: 70%;
   padding: 1em;
 }
 
 label {
   display: block;
+}
+
+.inputs {
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 1em;
 }
 
 input {
@@ -43,4 +54,31 @@ input {
 .editor {
   border: 1px solid black;
   padding: 0.5em;
+}
+
+.close-button {
+  border: none;
+  padding: 0.5em 1em;
+  font-size: 1.2rem;
+}
+
+:focus {
+  outline: 4px solid rgb(0, 191, 255);
+}
+
+#modal-root {
+  position: relative;
+  z-index: 999;
+}
+
+.modal {
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
