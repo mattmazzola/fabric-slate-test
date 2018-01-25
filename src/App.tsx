@@ -32,7 +32,9 @@ interface State {
   isModalOpen1: boolean
   isModalOpen2: boolean
   isModalOpen3: boolean
+  isModalOpen4: boolean
   values: SlateValue[]
+  values2: SlateValue[]
 }
 
 const initialState: State = {
@@ -40,7 +42,9 @@ const initialState: State = {
   isModalOpen1: false,
   isModalOpen2: false,
   isModalOpen3: false,
-  values: (new Array(numberOfInputsPerModal).fill(0).map((_, i) => createInitialValue(`Editor ${i}`)))
+  isModalOpen4: false,
+  values: (new Array(numberOfInputsPerModal).fill(0).map((_, i) => createInitialValue(`Editor ${i}`))),
+  values2: (new Array(numberOfInputsPerModal).fill(0).map((_, i) => createInitialValue(`Editor ${i}`)))
 }
 
 class App extends React.Component<{}, State> {
@@ -94,6 +98,18 @@ class App extends React.Component<{}, State> {
     })
   }
 
+  onClickButton4 = () => {
+    this.setState({
+      isModalOpen4: true
+    })
+  }
+
+  onClickClose4 = () => {
+    this.setState({
+      isModalOpen4: false
+    })
+  }
+
   onChangeValue(value: any, change: any) {
     const newValue = change.value
     const originalValueIndex = this.state.values.findIndex(v => v === value)
@@ -108,6 +124,20 @@ class App extends React.Component<{}, State> {
     })
   }
 
+  onChangeValue2(value: any, change: any) {
+    const newValue = change.value
+    const originalValueIndex = this.state.values2.findIndex(v => v === value)
+    const newValues = [
+      ...this.state.values.slice(0, originalValueIndex),
+      newValue,
+      ...this.state.values.slice(originalValueIndex + 1)
+    ]
+
+    this.setState({
+      values2: newValues
+    })
+  }
+
   render() {
     return (
       <div>
@@ -118,7 +148,8 @@ class App extends React.Component<{}, State> {
             <button type="button" onClick={this.onClickButton0}>Open <b>NativeModal</b> with Standard Inputs</button>
             <button type="button" onClick={this.onClickButton1}>Open <b>FabricModal</b> with Standard Inputs</button>
             <button type="button" onClick={this.onClickButton2}>Open <b>FabricModal</b> with OF.TextFields</button>
-            <button type="button" onClick={this.onClickButton3}>Open <b>FabricModal</b> with slate Editors</button>
+            <button type="button" onClick={this.onClickButton3}>Open <b>FabricModal</b> with Slate Editors</button>
+            <button type="button" onClick={this.onClickButton4}>Open <b>NativeModal</b> with Slate Editors</button>
           </div>
         </header>
 
@@ -207,6 +238,32 @@ class App extends React.Component<{}, State> {
               </div>)}
           </div>
         </FabricModal>
+
+        <NativeModal
+          isOpen={this.state.isModalOpen4}
+        >
+          <div className="modal">
+            <div className="test-modal test-modal--native">
+              <div className="test-modal-content">
+                <h2>Test Modal with Standard Inputs</h2>
+                <div>
+                  <button type="button" className="close-button" onClick={this.onClickClose4}>Close Modal</button>
+                </div>
+                <div className="inputs">
+                  {this.state.values2.map((value, i) =>
+                    <div key={i}>
+                      <label>Input {i}</label>
+                      <Editor
+                        className="editor"
+                        onChange={(change: any) => this.onChangeValue2(value, change)}
+                        value={value}
+                      />
+                    </div>)}
+                </div>
+              </div>
+            </div>
+          </div>
+        </NativeModal>
       </div>
     );
   }
