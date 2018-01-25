@@ -159,7 +159,7 @@ class App extends React.Component<{}, State> {
           <div className="modal">
             <div className="test-modal test-modal--native">
               <div className="test-modal-content">
-                <h2>Test Modal with Standard Inputs</h2>
+                <h2>Native Modal with Standard Inputs</h2>
                 <div>
                   <button type="button" className="close-button" onClick={this.onClickClose0}>Close Modal</button>
                 </div>
@@ -181,7 +181,7 @@ class App extends React.Component<{}, State> {
           isOpen={this.state.isModalOpen1}
         >
           <div className="test-modal-content">
-            <h2>Test Modal with Standard Inputs</h2>
+            <h2>Fabric Modal with Standard Inputs</h2>
             <div>
               <button type="button" className="close-button" onClick={this.onClickClose1}>Close Modal</button>
             </div>
@@ -201,7 +201,7 @@ class App extends React.Component<{}, State> {
           isOpen={this.state.isModalOpen2}
         >
           <div className="test-modal-content">
-            <h2>Test Modal with OF.TextFields</h2>
+            <h2>Fabric Modal with OF.TextFields</h2>
             <div>
               <button type="button" className="close-button" onClick={this.onClickClose2}>Close Modal</button>
             </div>
@@ -223,7 +223,7 @@ class App extends React.Component<{}, State> {
           isOpen={this.state.isModalOpen3}
         >
           <div className="test-modal-content">
-            <h2>Test Modal with OF.TextFields</h2>
+            <h2>Fabric Modal with OF.TextFields</h2>
             <div>
               <button type="button" className="close-button" onClick={this.onClickClose3}>Close Modal</button>
             </div>
@@ -245,7 +245,7 @@ class App extends React.Component<{}, State> {
           <div className="modal">
             <div className="test-modal test-modal--native">
               <div className="test-modal-content">
-                <h2>Test Modal with Standard Inputs</h2>
+                <h2>Native with Slate Inputs</h2>
                 <div>
                   <button type="button" className="close-button" onClick={this.onClickClose4}>Close Modal</button>
                 </div>
