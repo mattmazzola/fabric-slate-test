@@ -68,7 +68,7 @@ class App extends React.Component<{}, State> {
     return (
       <div>
         <header>
-          <h1>Fabric Modal Focus Bug</h1>
+          <h1>Slate.js Scroll Bug</h1>
 
           <div className="buttons">
             <button type="button" onClick={this.onClickButton}>Open <b>NativeModal</b> with Slate Editors</button>
